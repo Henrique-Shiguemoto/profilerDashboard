@@ -1,9 +1,8 @@
 library(shiny)
 library(shinyjs)
 library(shinycustomloader)
-library(rio)
 library(tidyverse)
-library(ggplot2)
+library(highcharter)
 library(shinydashboard)
 
 shinyServer(function(input, output){
