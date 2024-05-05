@@ -1,25 +1,29 @@
 library(shiny)
-library(shinyjs)
 library(shinycustomloader)
 library(shinydashboard)
 library(highcharter)
 
 shinyUI(
   dashboardPage(
-    dashboardHeader(title = "Dashboard Template"),
-    dashboardSidebar(
-      sidebarMenu(
-        menuItem("Tab1", tabName = "tab1")
-        # uncomment this line if you wanna debug with shinyjs
-        # useShinyjs(),
-        # runcodeUI(type = "textarea")
-      )
-    ),
+    dashboardHeader(title = "Profiler Dashboard"),
+    dashboardSidebar(disable = TRUE),
     dashboardBody(
-      tabItems(
-        # Add elements such as boxes, fluidRows and columns after the tabName parameters
-        tabItem(tabName = "tab1")
-      )
+      uiOutput("ui_input_select_function"),
+      uiOutput("ui_input_file_csv"),
+      fluidRow(style = "margin-top: 10px;",
+               column(width = 3, valueBoxOutput("vbAVG", width = NULL)),
+               column(width = 3, valueBoxOutput("vbSTD", width = NULL)),
+               column(width = 3, valueBoxOutput("vbMAX", width = NULL)),
+               column(width = 3, valueBoxOutput("vbMIN", width = NULL))),
+      fluidRow(column(width = 12,
+                      tabBox(title = "Timing Comparisons", 
+                             width = NULL,
+                             side = "right",
+                             tabPanel(title = "Timings", highchartOutput("linePlotTimings")),
+                             tabPanel(title = "Shares", highchartOutput("stackedColumnsPlotShares"))
+                             )
+                      )
+               )
     )
   )
 )
