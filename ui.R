@@ -8,6 +8,9 @@ shinyUI(
     dashboardHeader(title = "Profiler Dashboard"),
     dashboardSidebar(disable = TRUE),
     dashboardBody(
+      tags$head(
+        tags$link(rel = "stylesheet", type = "text/css", href = "elem_style.css")
+      ),
       uiOutput("ui_input_select_function"),
       uiOutput("ui_input_file_csv"),
       fluidRow(style = "margin-top: 10px;",

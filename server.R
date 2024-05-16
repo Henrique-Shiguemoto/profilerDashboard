@@ -47,8 +47,10 @@ shinyServer(function(input, output){
     input_function <- input$input_select_function
     csv <- chosen_file()
     
-    if(is.null(input_function) | input_function == "") {
-      valueBox(value = "0s", subtitle = "Average Time")
+    if(is.null(input_function)) {
+      valueBox(value = "0", subtitle = "Average Time")
+    }else if(input_function == "") {
+      valueBox(value = "0", subtitle = "Average Time")
     }else{
       specified_column <- csv[[input_function]]
       valueBox(value = paste0(round(mean(specified_column), 3), "s"), 
@@ -60,8 +62,10 @@ shinyServer(function(input, output){
     input_function <- input$input_select_function
     csv <- chosen_file()
     
-    if(is.null(input_function) | input_function == "") {
-      valueBox(value = "0s", subtitle = "Maximum Time")
+    if(is.null(input_function)) {
+      valueBox(value = "0", subtitle = "Maximum Time")
+    }else if(input_function == "") {
+      valueBox(value = "0", subtitle = "Maximum Time")
     }else{
       specified_column <- csv[[input_function]]
       valueBox(value = paste0(round(max(specified_column), 3), "s"), 
@@ -73,8 +77,10 @@ shinyServer(function(input, output){
     input_function <- input$input_select_function
     csv <- chosen_file()
     
-    if(is.null(input_function) | input_function == "") {
-      valueBox(value = "0s", subtitle = "Minimum Time")
+    if(is.null(input_function)) {
+      valueBox(value = "0", subtitle = "Minimum Time")
+    }else if(input_function == "") {
+      valueBox(value = "0", subtitle = "Minimum Time")
     }else{
       specified_column <- csv[[input_function]]
       valueBox(value = paste0(round(min(specified_column), 3), "s"), 
@@ -86,8 +92,10 @@ shinyServer(function(input, output){
     input_function <- input$input_select_function
     csv <- chosen_file()
     
-    if(is.null(input_function) | input_function == "") {
-      valueBox(value = "0s", subtitle = "Standard Time Deviation")
+    if(is.null(input_function)) {
+      valueBox(value = "0", subtitle = "Standard Time Deviation")
+    }else if(input_function == "") {
+      valueBox(value = "0", subtitle = "Standard Time Deviation")
     }else{
       specified_column <- csv[[input_function]]
       valueBox(value = paste0(round(sd(specified_column), 3), "s"), 
